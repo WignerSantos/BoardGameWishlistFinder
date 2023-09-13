@@ -2,12 +2,14 @@
 
 /* css style */
 :root {
-	--secondary-color: #00a4f5;
+    --primary-color: #112A46;
 	--bg-color: #fff;
 	--border-radius: 8px;
 	--border-radius-full: 30px;
 	--border-color-light: #eee;
 	--box-shadow: 0 0.5rem 1rem rgb(12 12 12 / 5%);
+
+	--white: #FFF;
   }
 
  * {
@@ -270,11 +272,15 @@ textarea {
   font-weight: bold;
   outline: none;
   border: none;
-  background: #112A46;
+  background: var(--primary-color);
+}
+
+.btn-style a {
+  color: var(--white);
 }
 
 .btn-style:hover {
-  background: var(--secondary-color);
+    transform: scale(1.1);
 }
 /* End button style  */
 
