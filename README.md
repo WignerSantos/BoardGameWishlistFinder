@@ -3,7 +3,7 @@ Repositório dedicado a um projeto pessoal de wishlist de board games que permit
 
 Recursos principais incluem:
 
-Adicionar jogos à lista de desejos.
-Cadastro de jogos.
-Pesquisa de preços em várias lojas online.
+Adicionar jogos à lista de desejos.<br>
+Cadastro de jogos.<br>
+Pesquisa de preços em várias lojas online.<br>
 Notificações por e-mail para informar quando um jogo da wishlist estiver disponível a um preço acessível.
