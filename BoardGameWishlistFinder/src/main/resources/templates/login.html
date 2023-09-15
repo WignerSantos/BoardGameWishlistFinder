@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +12,6 @@
     </head>
 
     <body>
-
-        <!-- header -->
-        <div th:replace="~{header :: header}">...</div>
-        <!-- //header -->
-
 
         <!-- login block -->
         <section class="banner w3l-contact py-5" id="contact">
@@ -37,7 +33,7 @@
                             </div>
                             <div class="col-md-8 login-center d-flex justify-content-between">
                                 <button class="btn btn-style btn-style-3">Log In</button>
-                                <button class="btn btn-style btn-style-3"><a th:href="@{/public/register}">Cadastrar</a></button>
+                                <button class="btn btn-style btn-style-3"><a th:href="@{/public/register}">Sign In</a></button>
                             </div>
                         </form>
                     </div>
