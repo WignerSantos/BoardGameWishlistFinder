@@ -14,9 +14,9 @@ public class ProjectSecurityConfig {
         http.csrf((csrf) -> csrf.ignoringRequestMatchers(""))
                 .authorizeHttpRequests((request) -> request.requestMatchers("/login").permitAll()
                         .requestMatchers("/assets/**").permitAll()
-                        .requestMatchers("/dashboard").permitAll())
+                        .requestMatchers("/home").authenticated())
                         .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
-                                .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true"))
+                                .defaultSuccessUrl("/home").failureUrl("/login?error=true"))
                         .httpBasic(Customizer.withDefaults());
 
         return http.build();
