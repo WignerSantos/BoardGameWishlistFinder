@@ -3,6 +3,7 @@
 /* css style */
 :root {
     --primary-color: #112A46;
+	--secondary-color: #11FFF4;
 	--bg-color: #fff;
 	--border-radius: 8px;
 	--border-radius-full: 30px;
@@ -19,6 +20,10 @@
 body {
 	font-family: 'Poppins', sans-serif;
 	font-size: 14px;
+}
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 77px;
 }
 h1, h2, h3 {
 	font-weight: 700;
@@ -51,18 +56,14 @@ textarea {
 	padding-right: 0;
 	min-height: 50px;
 	line-height: 50px;
-	background: transparent;
 	z-index: 1030;
-}
-.navbar .active {
-	color: #5f0099 !important;
 }
 .navbar .nav-item {
 	margin: 0 5px;
 	padding: 0;
 }
 .navbar .nav-item a {
-	color: #112A46;
+	color: var(--secondary-color);
 	text-transform: uppercase;
 	font-weight: 600;
 	font-size: 15px;
@@ -81,36 +82,24 @@ textarea {
 	display: none;
 }
 .nav-scroll {
-	background: #fff;
-	-webkit-box-shadow: 0 1px 8px 3px rgba(0, 0, 0, 0.0509803922);
-	box-shadow: 0 1px 8px 3px rgba(0, 0, 0, 0.0509803922);
+	background: var(--primary-color);
 	-webkit-transition: all .4s ease;
 	transition: all .4s ease;
 }
-.nav-scroll .navbar-nav > li > a {
-	color: #333;
-}
-.nav-scroll .navbar-brand img {
-	-webkit-transform: scale(1.03) !important;
-	transform: scale(1.03) !important;
+.nav-scroll .nav-item a {
+	color: var(--secondary-color);
 }
 .nav-scroll .navbar-toggler {
 	cursor: pointer;
 }
-.nav-scroll .navbar-toggler span {
-	color: #333;
-}
-.nav-scroll .nav-link:hover:after {
-	background-color: #2388ed;
-}
-.nav-scroll .active {
-	position: relative;
+.navbar .container .navbar-nav .nav-item .active {
+	text-decoration: underline;
 }
 /* End nav block */
 
 /*Banner block*/
 .banner {
-	background: #11FFF4;
+	background: var(--secondary-color);
 	padding:100px 0px;
 	position:relative;
 }
@@ -122,7 +111,6 @@ textarea {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background: url(images/pattern.png);
 }
 .banner a.weblink {
 	color:#ffffff;
@@ -130,11 +118,6 @@ textarea {
 }
 .banner a:hover {
 	text-decoration:none;
-}
-.svg-wave {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
 }
 .banner-text {
 	padding-right:80px;
@@ -153,11 +136,98 @@ textarea {
 .banner-text ul li a {
 	display: block;
 }
-.banner-text ul li a img {
+/*End Banner block*/
+
+/* LastBoardGameAdded block*/
+.lastGameAdded {
+	background: #380065;
+	color: var(--white);
+	padding:100px 0px;
+	position:relative;
+}
+.lastGameAdded::before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.lastGameAdded a.weblink {
+	color:#ffffff;
+	border-bottom:1px dotted #ffffff;
+}
+.lastGameAdded a:hover {
+	text-decoration:none;
+}
+.lastGameAdded-text {
+	padding-right:80px;
+	margin:50px 0px 0px;
+}
+.lastGameAdded-text p {
+	margin:40px 0px;
+}
+.lastGameAdded-text ul {
+	list-style: none;
+}
+.lastGameAdded-text ul li {
+	display: inline-block;
+	margin: 0px 10px 10px 0px;
+}
+.lastGameAdded-text ul li a {
+	display: block;
+}
+.lastGameAdded-text ul li a img {
 	width: 150px;
 	border-radius: 7px;
 }
-/*End Banner block*/
+/* End LastBoardGameAdded */
+
+/* boardgames block*/
+.boardgames {
+	background: var(--secondary-color);
+	padding:100px 0px;
+	position:relative;
+}
+.boardgames::before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.boardgames a.weblink {
+	color:#ffffff;
+	border-bottom:1px dotted #ffffff;
+}
+.boardgames a:hover {
+	text-decoration:none;
+}
+.boardgames-text {
+	padding-right:80px;
+	margin:50px 0px 0px;
+}
+.boardgames-text p {
+	margin:40px 0px;
+}
+.boardgames-text ul {
+	list-style: none;
+}
+.boardgames-text ul li {
+	display: inline-block;
+	margin: 0px 10px 10px 0px;
+}
+.boardgames-text ul li a {
+	display: block;
+}
+.boardgames-text ul li a img {
+	width: 150px;
+	border-radius: 7px;
+}
+/* End boardgames */
 
 /* Alert block */
 .alert {
