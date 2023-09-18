@@ -22,7 +22,7 @@ import org.hibernate.annotations.GenericGenerator;
                 message = "Email do not match!"
         )
 })
-public class Person {
+public class Person extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
@@ -54,6 +54,10 @@ public class Person {
     @Transient
     @JsonIgnore
     private String confirmPassword;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Roles.class)
+    @JoinColumn(name = "role_id", referencedColumnName = "roleId", nullable = false)
+    private Roles role;
 
     public int getPersonId() {
         return personId;
@@ -103,4 +107,11 @@ public class Person {
         this.confirmPassword = confirmPassword;
     }
 
+    public Roles getRole() {
+        return role;
+    }
+
+    public void setRole(Roles role) {
+        this.role = role;
+    }
 }
