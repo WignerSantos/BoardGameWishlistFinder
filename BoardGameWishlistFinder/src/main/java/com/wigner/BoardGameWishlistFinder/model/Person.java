@@ -1,17 +1,58 @@
 package com.wigner.BoardGameWishlistFinder.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.wigner.BoardGameWishlistFinder.annotations.ConfirmValuesMatch;
+import com.wigner.BoardGameWishlistFinder.annotations.Password;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@ConfirmValuesMatch.list({
+        @ConfirmValuesMatch(
+                field = "password",
+                fieldMatch = "confirmPassword",
+                message = "Passwords do not match!"
+        ),
+        @ConfirmValuesMatch(
+                field = "email",
+                fieldMatch = "confirmEmail",
+                message = "Email do not match!"
+        )
+})
 public class Person {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @GenericGenerator(name = "native")
     private int personId;
 
+    @NotBlank(message = "Name must not be blank!")
+    @Size(min = 3, message = "Name must be at least 3 characters long")
     private String name;
 
+    @NotBlank(message = "Email must not be blank!")
+    @Email(message = "Please provide a valid email!")
     private String email;
 
+    @NotBlank(message = "Confirm Email must not be blank!")
+    @Email(message = "Please provide a valid email!")
+    @Transient
+    @JsonIgnore
     private String confirmEmail;
 
+    @NotBlank(message = "Password must not be blank!")
+    @Size(min = 9, message = "Password must be at least 9 characters long")
+    @Password
+    @JsonIgnore
     private String password;
 
+    @NotBlank(message = "Confirm Password must not be blank!")
+    @Size(min = 9, message = "Confirm password must be at least 9 characters long")
+    @Transient
+    @JsonIgnore
     private String confirmPassword;
 
     public int getPersonId() {
