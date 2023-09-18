@@ -19,6 +19,8 @@ public class ProjectSecurityConfig {
                         .requestMatchers("/home").authenticated())
                         .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
                                 .defaultSuccessUrl("/home").failureUrl("/login?error=true"))
+                        .logout(logoutConfigurer -> logoutConfigurer.logoutSuccessUrl("/login?logout=true")
+                                .invalidateHttpSession(true).permitAll())
                         .httpBasic(Customizer.withDefaults());
 
         return http.build();
