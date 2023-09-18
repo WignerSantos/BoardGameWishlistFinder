@@ -21,7 +21,7 @@
                 </div>
                 <div class="row login-block">
                     <div class="col-md-6 login-center">
-                        <form action="/login" method="post" class="signin-form">
+                        <form th:action="@{/login}" method="post" class="signin-form">
                             <div class="col-md-8 login-center input-grids">
                                 <li class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(errorMessage)}"
                                     th:text="${errorMessage}"></li>
@@ -33,7 +33,7 @@
                             </div>
                             <div class="col-md-8 login-center d-flex justify-content-between">
                                 <button class="btn btn-style btn-style-3">Log In</button>
-                                <button class="btn btn-style btn-style-3"><a th:href="@{/public/register}">Sign In</a></button>
+                                <button class="btn btn-style btn-style-3"><a href="#">Sign In</a></button>
                             </div>
                         </form>
                     </div>
