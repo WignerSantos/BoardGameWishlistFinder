@@ -12,7 +12,9 @@ public class ProjectSecurityConfig {
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf((csrf) -> csrf.ignoringRequestMatchers(""))
-                .authorizeHttpRequests((request) -> request.requestMatchers("/login").permitAll()
+                .authorizeHttpRequests((request) -> request
+                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/logout").permitAll()
                         .requestMatchers("/assets/**").permitAll()
                         .requestMatchers("/home").authenticated())
                         .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
