@@ -37,6 +37,16 @@ public class BaseEntity {
     @JsonIgnore
     private String updatedBy;
 
+    public BaseEntity() {
+    }
+
+    public BaseEntity(LocalDateTime createdAt, String createdBy, LocalDateTime updatedAt, String updatedBy) {
+        this.createdAt = createdAt;
+        this.createdBy = createdBy;
+        this.updatedAt = updatedAt;
+        this.updatedBy = updatedBy;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }

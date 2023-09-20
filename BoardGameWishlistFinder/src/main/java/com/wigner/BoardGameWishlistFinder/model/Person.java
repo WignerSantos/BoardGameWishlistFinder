@@ -9,6 +9,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.time.LocalDateTime;
+
 @Entity
 @ConfirmValuesMatch.list({
         @ConfirmValuesMatch(
@@ -58,6 +60,20 @@ public class Person extends BaseEntity {
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Roles.class)
     @JoinColumn(name = "role_id", referencedColumnName = "roleId", nullable = false)
     private Roles role;
+
+    public Person() {
+    }
+
+    public Person(int personId, String name, String email, String confirmEmail, String password, String confirmPassword, LocalDateTime createdAt, String createdBy, LocalDateTime updatedAt, String updatedBy, Roles role) {
+        super(createdAt, createdBy, updatedAt, updatedBy);
+        this.personId = personId;
+        this.name = name;
+        this.email = email;
+        this.confirmEmail = confirmEmail;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
+        this.role = role;
+    }
 
     public int getPersonId() {
         return personId;
