@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <title>Users</title>
+    </head>
+    
+    <body>
+        <!-- header -->
+        <div th:replace="~{header :: header}">...</div>
+        <!-- //header -->
+
+        <section class="users_content">
+
+            <button class="add_user"><a href="#">Add User</a></button>
+
+            <table class="table users_table w3-table">
+                <thead>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Created at</th>
+                    <th>Created by</th>
+                    <th>Updated at</th>
+                    <th>Updated by</th>
+                    <th></th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr th:each="user: ${users}">
+                        <td th:text="${user.name}"></td>
+                        <td th:text="${user.email}">wigner12@gmail.com</td>
+                        <td th:text="${user.role.roleName}">ADMIN</td>
+                        <td th:text="${user.createdAt}">20/09/2023</td>
+                        <td th:text="${user.createdBy}">Wigner</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td> <a href=""> <i class="fa-solid fa-pen-to-square"></i> </a></td>
+                        <td> <a href=""> <i class="fa-solid fa-trash"></i> </a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- footer block -->
+        <div th:replace="~{footer :: footer}">...</div>
+        <!-- //footer block -->
+
+        <!-- Jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+        <!-- Bootstrap -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+        <!-- Home js -->
+        <script TH:src="@{/assets/js/home.js}"></script>
+
+         <!-- Font awesome icons -->
+         <script src="https://kit.fontawesome.com/d92ab718d9.js" crossorigin="anonymous"></script>
+
+    </body>
+
+</html>
