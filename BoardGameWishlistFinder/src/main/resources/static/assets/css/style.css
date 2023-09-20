@@ -4,7 +4,8 @@
 :root {
     --primary-color: #112A46;
 	--secondary-color: #11FFF4;
-	--bg-color: #fff;
+	--tertiary-color: #380065;
+	--footer-bg: #09131d;
 	--border-radius: 8px;
 	--border-radius-full: 30px;
 	--border-color-light: #eee;
@@ -36,6 +37,9 @@ h6 {
 }
 li {
 	list-style-type: none;
+}
+i {
+	color: var(--white);
 }
 input,
 button,
@@ -98,6 +102,48 @@ textarea {
 }
 /* End nav block */
 
+/* Users block */
+.users_content {
+	position: relative;
+	padding: 150px 50px 50px 50px;
+	background: var(--tertiary-color);
+
+}
+.users_content .users_table {
+	background-color: var(--primary-color);
+	color: var(--white);
+	border-collapse: collapse;
+}
+
+.users_content .users_table thead {
+	border: 5px solid var(--primary-color);
+	font-weight: bold;
+}
+
+.users_content .add_user {
+	margin-bottom: 10px;
+	padding: 5px;
+	text-align: center;
+	font-weight: bold;
+
+	background-color: var(--secondary-color);
+	color: var(--primary-color);
+}
+
+.users_content .add_user {
+	border: none;
+}
+
+.users_content .add_user:hover {
+	transform: scale(1.1);
+}
+
+.users_content .add_user a {
+	text-decoration: none;
+	color: var(--primary-color);
+}
+/* End users block*/
+
 /*Banner block*/
 .banner {
 	background: var(--secondary-color);
@@ -114,8 +160,8 @@ textarea {
 	height: 100%;
 }
 .banner a.weblink {
-	color:#ffffff;
-	border-bottom:1px dotted #ffffff;
+	color: var(--white);
+	border-bottom:1px dotted var(--white);
 }
 .banner a:hover {
 	text-decoration:none;
@@ -141,7 +187,7 @@ textarea {
 
 /* LastBoardGameAdded block*/
 .lastGameAdded {
-	background: #380065;
+	background: var(--tertiary-color);
 	color: var(--white);
 	padding:100px 0px;
 	position:relative;
@@ -156,8 +202,8 @@ textarea {
 	height: 100%;
 }
 .lastGameAdded a.weblink {
-	color:#ffffff;
-	border-bottom:1px dotted #ffffff;
+	color: var(--white);
+	border-bottom:1px dotted var(--white);
 }
 .lastGameAdded a:hover {
 	text-decoration:none;
@@ -201,8 +247,8 @@ textarea {
 	height: 100%;
 }
 .boardgames a.weblink {
-	color:#ffffff;
-	border-bottom:1px dotted #ffffff;
+	color: var(--white);
+	border-bottom:1px dotted var(--white);
 }
 .boardgames a:hover {
 	text-decoration:none;
@@ -338,7 +384,7 @@ textarea {
 .btn-style {
   padding: 12px 36px 14px;
   font-size: 16px;
-  color: #fff;
+  color: var(--white);
   border-radius: var(--border-radius-full);
   font-weight: bold;
   outline: none;
@@ -392,62 +438,62 @@ textarea {
 
 /* footer block */
 .w3l-footer-29-main {
-	background: #09131d;
-  }
+	background: var(--footer-bg);
+}
   
-  .w3l-footer-29-main h6.footer-title-29 {
+.w3l-footer-29-main h6.footer-title-29 {
 	font-size: 20px;
 	line-height: 30px;
 	margin-bottom: 24px;
 	font-weight: 600;
-	color: #fff;
-  }
-  
-  .w3l-footer-29-main .footer-list-29 ul li {
+	color: var(--white);
+}
+
+.w3l-footer-29-main .footer-list-29 ul li {
 	list-style: none;
 	margin-bottom: 10px;
-  }
-  
-  .w3l-footer-29-main .footer-list-29 ul li:last-child {
+}
+
+.w3l-footer-29-main .footer-list-29 ul li:last-child {
 	margin-bottom: 0px;
-  }
-  
-  .w3l-footer-29-main .footer-list-29 ul li a,
-  .w3l-footer-29-main .footer-list-29 p a,
-  .w3l-footer-29-main .footer-list-29 p {
+}
+
+.w3l-footer-29-main .footer-list-29 ul li a,
+.w3l-footer-29-main .footer-list-29 p a,
+.w3l-footer-29-main .footer-list-29 p {
 	font-size: 15px;
 	color: #ababab;
 	padding-bottom: 4px;
-  }
-  
-  .w3l-footer-29-main .footer-list-29 ul li a {
+}
+
+.w3l-footer-29-main .footer-list-29 ul li a {
 	display: block;
-  }
-  
-  .w3l-footer-29-main .footer-list-29 ul li a:hover,
-  .w3l-footer-29-main .footer-list-29 p a:hover {
-	color: #fff;
-  }
-  
-  .w3l-footer-29-main .footer-list-29 ul li:last-child a,
-  .w3l-footer-29-main .footer-list-29 p {
+}
+
+.w3l-footer-29-main .footer-list-29 ul li a:hover,
+.w3l-footer-29-main .footer-list-29 p a:hover {
+	color: var(--white);
+}
+
+.w3l-footer-29-main .footer-list-29 ul li:last-child a,
+.w3l-footer-29-main .footer-list-29 p {
 	border-bottom: none;
-  }
-  
-  p.copy-footer-29 {
+}
+
+p.copy-footer-29 {
 	font-size: 15px;
-	color: #fff;
-  }
-  
-  p.copy-footer-29 a {
+	color: var(--white);
+}
+
+p.copy-footer-29 a {
 	color: var(--secondary-color);
-  }
-  
-  p.copy-footer-29 a:hover {
+}
+
+p.copy-footer-29 a:hover {
 	color: var(--primary-color);
-  }
-  
-  .w3l-footer-29-main input[type="email"] {
+}
+
+.w3l-footer-29-main input[type="email"] {
 	background: var(--subscribe-footer-input);
 	border: none;
 	padding: 16px 12px;
@@ -456,43 +502,40 @@ textarea {
 	width: 80%;
 	color: var(--heading-color);
 	border-radius: 4px 0 0 4px;
-  }
-  
-  .w3l-footer-29-main button {
+}
+
+.w3l-footer-29-main button {
 	border: none;
 	outline: none;
 	font-size: 16px;
 	padding: 16px 12px;
 	cursor: pointer;
 	width: 20%;
-	color: #fff;
+	color: var(--white);
 	background: var(--secondary-color);
 	border-radius: 0 4px 4px 0;
-  }
-  
-  @media (max-width: 991px) {
+}
+
+@media (max-width: 991px) {
 	.w3l-footer-29-main h6.footer-title-29 {
-	  margin-bottom: 20px;
-	  font-size: 20px;
+		margin-bottom: 20px;
+		font-size: 20px;
 	}
-  }
-  
-  @media (max-width: 415px) {
-  
+}
+
+@media (max-width: 415px) {
 	.w3l-footer-29-main .footer-list-29 ul li,
 	.w3l-footer-29-main .midd-footer-29:nth-child(1) .footer-list-29 ul li:last-child {
-	  margin-bottom: 8px;
+		margin-bottom: 8px;
 	}
-  
+
 	.col-4.footer-list-29 {
-	  flex: 0 0 auto;
-	  width: 100%;
+		flex: 0 0 auto;
+		width: 100%;
 	}
-  
+
 	.w3l-footer-29-main h6.footer-title-29 {
-	  margin-bottom: 10px;
+		margin-bottom: 10px;
 	}
-  }
-  
-  /* End footer block */
-  
+}  
+/* End footer block */
