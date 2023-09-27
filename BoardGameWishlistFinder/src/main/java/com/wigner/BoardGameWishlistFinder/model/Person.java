@@ -27,7 +27,7 @@ import java.time.LocalDateTime;
 public class Person extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native")
     private int personId;
 
