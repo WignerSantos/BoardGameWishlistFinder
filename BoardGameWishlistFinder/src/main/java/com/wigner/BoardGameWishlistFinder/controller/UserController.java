@@ -14,10 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.management.relation.Role;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -68,10 +64,15 @@ public class UserController {
             return modelAndView;
         }
 
-        boolean isSaved = personService.createUser(user);
-        if(isSaved) {
-            modelAndView.setViewName("redirect:/users");
-        } else {
+        try {
+            boolean isSaved = personService.createUser(user);
+            if(isSaved) {
+                modelAndView.setViewName("redirect:/users");
+            } else {
+                modelAndView.addObject("roles", roles);
+            }
+        } catch (Exception e) {
+            errors.rejectValue("email", "duplicate", "User with the same email already exists.");
             modelAndView.addObject("roles", roles);
         }
         return modelAndView;
