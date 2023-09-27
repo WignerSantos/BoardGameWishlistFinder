@@ -1,9 +1,6 @@
 package com.wigner.BoardGameWishlistFinder.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -14,6 +11,7 @@ public class Roles extends BaseEntity {
     @GenericGenerator(name = "native")
     private int roleId;
 
+    @Column(unique = true)
     private String roleName;
 
     public Roles() {
