@@ -115,4 +115,5 @@ public class Person extends BaseEntity {
     public void setRole(Roles role) {
         this.role = role;
     }
+
 }
