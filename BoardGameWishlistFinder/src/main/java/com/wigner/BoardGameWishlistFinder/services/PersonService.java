@@ -31,4 +31,16 @@ public class PersonService {
         return isSaved;
     }
 
+    public List<Person> findAll() {
+        return personRepository.findAll();
+    }
+
+    public Person findByPersonId(int personId) {
+        return personRepository.findByPersonId(personId);
+    }
+
+    public void deleteById(int id) {
+        personRepository.deleteById(id);
+    }
+
 }
