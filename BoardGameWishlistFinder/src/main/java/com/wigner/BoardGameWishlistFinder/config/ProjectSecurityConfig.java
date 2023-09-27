@@ -13,7 +13,7 @@ public class ProjectSecurityConfig {
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf((csrf) -> csrf.ignoringRequestMatchers("/createUser"))
+        http.csrf((csrf) -> csrf.ignoringRequestMatchers("/admin/**"))
                 .authorizeHttpRequests((request) -> request
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/logout").permitAll()
