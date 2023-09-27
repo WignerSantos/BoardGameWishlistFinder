@@ -24,7 +24,7 @@
             <ul>
                 <li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('user.*')}" th:text="${error}" />
             </ul>
-            <form th:action="@{/createUser}" method="POST" th:object="${user}" class="input-grids">
+            <form th:action="@{/admin/createUser}" method="POST" th:object="${user}" class="input-grids">
 
                 <label for="name">Name</label>
                 <input type="text" id="name" th:field="*{name}" placeholder="Your name...">
