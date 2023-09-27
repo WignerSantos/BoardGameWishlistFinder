@@ -17,6 +17,7 @@ public class ProjectSecurityConfig {
                         .requestMatchers("/logout").permitAll()
                         .requestMatchers("/assets/**").permitAll()
                         .requestMatchers("/home").authenticated()
+                        .requestMatchers("/displayCreateUser").authenticated()
                         .requestMatchers("/users").authenticated())
                         .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
                                 .defaultSuccessUrl("/home").failureUrl("/login?error=true"))
