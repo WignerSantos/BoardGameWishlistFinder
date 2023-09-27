@@ -9,4 +9,7 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
 
     Person readByEmail(String email);
 
+    Person findByPersonId(int personId);
+
+    void deleteById(int personId);
 }
