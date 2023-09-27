@@ -12,6 +12,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -19,9 +20,6 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/admin")
 public class UserController {
-
-    @Autowired
-    PersonRepository personRepository;
 
     @Autowired
     PersonService personService;
@@ -34,7 +32,7 @@ public class UserController {
 
         ModelAndView modelAndView = new ModelAndView("users.html");
 
-        List<Person> users = personRepository.findAll();
+        List<Person> users = personService.findAll();
 
         modelAndView.addObject("users", users);
 
@@ -76,6 +74,19 @@ public class UserController {
             errors.rejectValue("email", "duplicate", "User with the same email already exists.");
             modelAndView.addObject("roles", roles);
         }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/deleteUser")
+    public ModelAndView deleteUser(@RequestParam(value = "personId") int personId) {
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/users");
+
+        Person person = personService.findByPersonId(personId);
+        if(null != person) {
+            personService.deleteById(personId);
+        }
+
         return modelAndView;
     }
 
