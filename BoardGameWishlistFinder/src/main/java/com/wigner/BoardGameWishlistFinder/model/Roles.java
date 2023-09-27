@@ -10,7 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Roles extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native")
     private int roleId;
 
