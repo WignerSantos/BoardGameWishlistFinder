@@ -35,7 +35,6 @@ public class Person extends BaseEntity {
 
     @NotBlank(message = "Email must not be blank!")
     @Email(message = "Please provide a valid email!")
-    @Column(unique = true)
     private String email;
 
     @NotBlank(message = "Confirm Email must not be blank!")
