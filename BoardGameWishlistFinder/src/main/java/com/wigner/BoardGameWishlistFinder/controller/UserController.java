@@ -2,7 +2,6 @@ package com.wigner.BoardGameWishlistFinder.controller;
 
 import com.wigner.BoardGameWishlistFinder.model.Person;
 import com.wigner.BoardGameWishlistFinder.model.Roles;
-import com.wigner.BoardGameWishlistFinder.repositories.PersonRepository;
 import com.wigner.BoardGameWishlistFinder.repositories.RolesRepository;
 import com.wigner.BoardGameWishlistFinder.services.PersonService;
 import jakarta.validation.Valid;
@@ -63,17 +62,65 @@ public class UserController {
             return modelAndView;
         }
 
-        try {
-            boolean isSaved = personService.createUser(user);
+        boolean isSaved = personService.saveUser(user);
+        if(isSaved) {
+            modelAndView.setViewName("redirect:/admin/users");
+        } else {
+            modelAndView.addObject("roles", roles);
+
+            errors.rejectValue("email", "duplicate", "User already exists.");
+        }
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/displayUserUpdate", method = RequestMethod.GET)
+    public ModelAndView displayUserPage(@RequestParam(value = "personId") int personId) {
+
+        ModelAndView modelAndView = new ModelAndView("update_users.html");
+
+        List<Roles> roles = rolesRepository.findAll();
+        Person person = personService.findByPersonId(personId);
+
+        if(null == person) {
+            modelAndView.setViewName("redirect:/users");
+            return modelAndView;
+        }
+
+        modelAndView.addObject("user", person);
+        modelAndView.addObject("roles", roles);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+    public ModelAndView updateUser(@Valid @ModelAttribute(value = "user") Person user, Errors errors) {
+
+        ModelAndView modelAndView = new ModelAndView("update_users.html");
+
+        List<Roles> roles = rolesRepository.findAll();
+
+        if(errors.hasErrors()) {
+            modelAndView.addObject("roles", roles);
+            return modelAndView;
+        }
+
+        if(user.getPersonId() > 0) {
+            boolean isSaved = personService.saveUser(user);
+
             if(isSaved) {
-                modelAndView.setViewName("redirect:/users");
+                modelAndView.setViewName("redirect:/admin/users");
             } else {
                 modelAndView.addObject("roles", roles);
+
+                errors.rejectValue("email", "duplicate", "User with the same email already exists.");
             }
-        } catch (Exception e) {
-            errors.rejectValue("email", "duplicate", "User with the same email already exists.");
+        } else {
             modelAndView.addObject("roles", roles);
+
+            errors.reject("notFound", "User not found!");
         }
+
         return modelAndView;
     }
 
