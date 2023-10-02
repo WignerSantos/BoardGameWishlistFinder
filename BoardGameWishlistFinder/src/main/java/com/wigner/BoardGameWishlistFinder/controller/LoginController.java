@@ -3,8 +3,10 @@ package com.wigner.BoardGameWishlistFinder.controller;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +21,13 @@ public class LoginController {
     public ModelAndView displayLoginPage(@RequestParam(value = "error", required = false) String error,
                                          @RequestParam(value = "logout", required = false) String logout) {
 
-        ModelAndView modelAndView = new ModelAndView("login.html");
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/home");
+
+        if(authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            modelAndView.setViewName("login.html");
+        }
 
         String errorMessage = null;
 
