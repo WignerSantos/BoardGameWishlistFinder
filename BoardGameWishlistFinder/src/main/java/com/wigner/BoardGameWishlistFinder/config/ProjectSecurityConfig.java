@@ -19,7 +19,7 @@ public class ProjectSecurityConfig {
                         .requestMatchers("/logout").permitAll()
                         .requestMatchers("/assets/**").permitAll()
                         .requestMatchers("/home").authenticated()
-                        .requestMatchers("/admin/**").authenticated())
+                        .requestMatchers("/admin/**").hasRole("ADMIN"))
                         .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
                                 .defaultSuccessUrl("/home").failureUrl("/login?error=true"))
                         .logout(logoutConfigurer -> logoutConfigurer.logoutSuccessUrl("/login?logout=true")
