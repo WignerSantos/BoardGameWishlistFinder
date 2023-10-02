@@ -12,7 +12,7 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        <title>Create User</title>
+        <title>Update User</title>
     </head>
     
     <body>
@@ -24,7 +24,9 @@
             <ul>
                 <li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('user.*')}" th:text="${error}" />
             </ul>
-            <form th:action="@{/admin/createUser}" method="POST" th:object="${user}" class="input-grids">
+            <form th:action="@{/admin/updateUser}" method="POST" th:object="${user}" class="input-grids">
+
+                <input type="hidden" id="personId" th:field="*{personId}">
 
                 <label for="name">Name</label>
                 <input type="text" id="name" th:field="*{name}" placeholder="Your name...">
@@ -65,7 +67,7 @@
                             </select>
                         </div>
                         <div class="col-sm-6 add-grid">
-                            <button class="add-button">ADD</button>
+                            <button class="add-button">UPDATE</button>
                         </div>
                     </div>
                 </div>
