@@ -17,15 +17,25 @@ public class PersonService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public boolean createUser(Person person) {
+    public boolean saveUser(Person person) {
 
         boolean isSaved = false;
 
         person.setPassword(passwordEncoder.encode(person.getPassword()));
-        personRepository.save(person);
 
-        if(null != person && person.getPersonId() > 0) {
-            isSaved = true;
+        Person p1 = personRepository.readByEmail(person.getEmail());
+        if(null == p1) {
+            personRepository.save(person);
+
+            if(person.getPersonId() > 0) {
+                isSaved = true;
+            }
+        } else {
+            if(person.getPersonId() == p1.getPersonId()) {
+                personRepository.save(person);
+
+                isSaved = true;
+            }
         }
 
         return isSaved;
