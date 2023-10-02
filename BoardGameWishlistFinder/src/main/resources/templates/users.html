@@ -43,7 +43,7 @@
                         <td th:text="${user.createdBy}"></td>
                         <td th:text="${user.updatedAt} == null ? '-' : ${user.updatedAt}"></td>
                         <td th:text="${user.updatedBy} == null ? '-' : ${user.updatedBy}"></td>
-                        <td> <a href=""> <i class="fa-solid fa-pen-to-square"></i> </a></td>
+                        <td> <a th:href="@{/admin/displayUserUpdate(personId=${user.personId})}"> <i class="fa-solid fa-pen-to-square"></i> </a></td>
                         <td> <a th:href="@{/admin/deleteUser(personId=${user.personId})}"> <i class="fa-solid fa-trash"></i> </a></td>
                     </tr>
                 </tbody>
