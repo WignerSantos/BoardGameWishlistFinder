@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import org.apache.logging.log4j.message.Message;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -27,8 +28,11 @@ public class Boardgame extends BaseEntity {
     @NotBlank(message = "Players must not be blank!")
     private String players;
 
-    @NotBlank(message = "Sleeve Size must not e blank!")
+    @NotBlank(message = "Sleeve Size must not be blank!")
     private String sleeveSize;
+
+    @NotBlank(message = "Image address must not be blank")
+    private String imageAddress;
 
     public Boardgame() {}
 
@@ -70,5 +74,21 @@ public class Boardgame extends BaseEntity {
 
     public void setPlayers(String players) {
         this.players = players;
+    }
+
+    public String getSleeveSize() {
+        return sleeveSize;
+    }
+
+    public void setSleeveSize(String sleeveSize) {
+        this.sleeveSize = sleeveSize;
+    }
+
+    public String getImageAddress() {
+        return imageAddress;
+    }
+
+    public void setImageAddress(String imageAddress) {
+        this.imageAddress = imageAddress;
     }
 }
