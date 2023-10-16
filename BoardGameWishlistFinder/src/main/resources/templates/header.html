@@ -12,7 +12,7 @@
                     <div class="navbar-container" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item"> <a class="nav-link active" th:href="@{/home}">Home</a> </li>
-                            <li class="nav-item"> <a class="nav-link" href="#boardgames">Boardgames</a> </li>
+                            <li class="nav-item"> <a class="nav-link" th:href="@{/boardgames}">Boardgames</a> </li>
                             <li class="nav-item"> <a class="nav-link" th:href="@{/#}">Wishlist</a> </li>
                             <li class="nav-item" sec:authorize="hasRole('ADMIN')"> <a class="nav-link" th:href="@{/admin/users}">Users</a> </li> <!--Just Admin-->
                             <li class="nav-item"> <a class="nav-link" th:href="@{/logout}">Logout</a> </li>
