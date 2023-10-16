@@ -21,20 +21,20 @@
         <!-- //header -->
 
         <section class="boardgames_page">
-            <div class="card">
+            <div class="card" th:each="boardgame : ${boardgames}">
                 <div class="card--image">
-                    <a href=""><img th:src="${boardgame.url_image}" alt=""></a>
+                    <a href=""><img th:src="${boardgame.imageAddress}" alt=""></a>
                 </div>
                 <div class="card--info info--1">
-                    <span class="info--text" th:text="*{boardgame.name}"></span>
+                    <span class="info--text" th:text="${boardgame.name}"></span>
                     <div class="info--image">
-                        <a href=""><img th:src="${boardgame.url_image}" alt=""></a>
+                        <a href=""><img th:src="${boardgame.imageAddress}" alt=""></a>
                     </div>
                 </div>
                 <div class="card--info info--2">
-                    <span class="info--text" th:text="*{boardgame.players}"></span>
+                    <span class="info--text" th:text="${boardgame.players}"></span>
                     <div class="info--image">
-                        <a href=""><img th:src="${boardgame.url_image}" alt=""></a>
+                        <a href=""><img th:src="${boardgame.imageAddress}" alt=""></a>
                     </div>
                 </div>
             </div>
