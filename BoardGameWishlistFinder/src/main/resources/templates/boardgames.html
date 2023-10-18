@@ -14,21 +14,24 @@
         <div th:replace="~{header :: header}">...</div>
         <!-- //header -->
 
-        <section class="boardgames_page">
-            <div class="card" th:each="boardgame : ${boardgames}">
-                <div class="card--image">
-                    <a th:href="@{/}"><img th:src="${boardgame.imageAddress}" alt=""></a>
-                </div>
-                <div class="card--info info--1">
-                    <span class="info--text" th:text="${boardgame.name}"></span>
-                    <div class="info--image">
-                        <a href=""><img th:src="${boardgame.imageAddress}" alt=""></a>
+        <section class="bgSection">
+            <input type="text" id="searchInput" placeholder="Search board games...">
+            <div class="bgPage">
+                <div class="card" th:each="boardgame : ${boardgames}">
+                    <div class="card--image">
+                        <a th:href="@{/}"><img th:src="${boardgame.imageAddress}" alt=""></a>
                     </div>
-                </div>
-                <div class="card--info info--2">
-                    <span class="info--text" th:text="${boardgame.players}"></span>
-                    <div class="info--image">
-                        <a href=""><img th:src="${boardgame.imageAddress}" alt=""></a>
+                    <div class="card--info info--1">
+                        <span class="info--text" th:text="${boardgame.name}"></span>
+                        <div class="info--image">
+                            <a href=""><img th:src="${boardgame.imageAddress}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="card--info info--2">
+                        <span class="info--text" th:text="${boardgame.players}"></span>
+                        <div class="info--image">
+                            <a href=""><img th:src="${boardgame.imageAddress}" alt=""></a>
+                        </div>
                     </div>
                 </div>
             </div>
