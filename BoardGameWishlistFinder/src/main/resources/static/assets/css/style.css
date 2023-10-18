@@ -282,12 +282,23 @@ i {
 /* End boardgames */
 
 /* Boardgame page */
-.boardgames_page {
+.bgSection {
+    position: relative;
+    padding: 100px 50px 50px 50px;
+    min-height: 258px;
+    background: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+}
+#searchInput {
+    align-self: flex-end;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: var(--border-radius);
+}
+.bgPage {
 	position: relative;
-	padding: 150px 50px 50px 50px;
-	min-height: 258px;
-	background: var(--primary-color);
-	
+	margin-top: 30px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
