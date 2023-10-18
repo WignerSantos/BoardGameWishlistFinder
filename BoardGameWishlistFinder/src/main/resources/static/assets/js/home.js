@@ -25,3 +25,23 @@ $(window).on("scroll",function () {
         }
     })
 });
+
+$(document).ready(function() {
+    const $searchInput = $("#searchInput");
+    const $cards = $(".card");
+
+    $searchInput.on("input", function() {
+        const searchTerm = $searchInput.val().toLowerCase();
+
+        $cards.each(function() {
+            const $card = $(this);
+            const cardName = $card.find(".info--text").text().toLowerCase();
+
+            if (cardName.includes(searchTerm)) {
+                $card.show();
+            } else {
+                $card.hide();
+            }
+        });
+    });
+});
