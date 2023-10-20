@@ -15,7 +15,10 @@
         <!-- //header -->
 
         <section class="bgSection">
-            <input type="text" id="searchInput" placeholder="Search board games...">
+            <div class="navBgSection">
+                <a th:href="@{/admin/displayCreateBoardgame}" sec:authorize="hasRole('ADMIN')"><input type="button" value="Create"></a>
+                <input type="text" id="searchInput" placeholder="Search board games...">
+            </div>
             <div class="bgPage">
                 <div class="card" th:each="boardgame : ${boardgames}">
                     <div class="card--image">
