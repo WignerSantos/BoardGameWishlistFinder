@@ -15,12 +15,12 @@
 
         <section class="create-boardgame">
             <ul>
-                <li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('user.*')}" th:text="${error}"></li>
+                <li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('boardgame.*')}" th:text="${error}"></li>
             </ul>
             <form th:action="@{/admin/createBoardgame}" th:object="${boardgame}" method="POST" class="input-grids">
 
-                <div class="teste" style="display: flex; width: 100%; justify-content: center; margin-bottom: 30px;">
-                    <img id="bgImage" style="max-width: 150px; max-height: 150px;" src="#" alt="">
+                <div class="divBgImage">
+                    <img id="bgImage" src="#" alt="">
                 </div>
 
                 <div class="input-grids">
@@ -33,7 +33,7 @@
                             <label for="publishing">Publishing</label>
                             <div class="input-with-image">
                                 <input type="text" id="publishing" th:field="*{publishing}" placeholder="Publishing..." class="input-text">
-                                <img src="../static/assets/images/publishing.png" alt="" class="input-image">
+                                <img th:src="@{/assets/images/publishing.png}" alt="Publishing" class="input-image">
                             </div>
                         </div>
                     </div>
@@ -45,28 +45,28 @@
                             <label for="duration">Duration</label>
                             <div class="input-with-image">
                                 <input type="text" id="duration" th:field="*{duration}" placeholder="XX MIN" class="input-text">
-                                <img src="../static/assets/images/duration.png" alt="" class="input-image">
+                                <img th:src="@{/assets/images/duration.png}" alt="Duration" class="input-image">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <label for="players">Players</label>
                             <div class="input-with-image">
                                 <input type="text" id="players" th:field="*{players}" placeholder="X - X" class="input-text">
-                                <img src="../static/assets/images/players.png" alt="" class="input-image">
+                                <img th:src="@{/assets/images/players.png}" alt="Players" class="input-image">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <label for="sleeveSize">Sleeves Size</label>
                             <div class="input-with-image">
                                 <input type="text" id="sleeveSize" th:field="*{sleeveSize}" placeholder="XX (XX.X mm X XX.X mm)" class="input-text">
-                                <img src="../static/assets/images/sleeves.png" alt="" class="input-image">
+                                <img th:src="@{/assets/images/sleeves.png}" alt="Sleeve Size" class="input-image">
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="input-grids">
-                    <div class="add-createBg col-12" style="display: flex; justify-content: space-between; margin-top: 20px;">
+                    <div class="add-createBg col-12">
                         <div class="c-image">
                             <label for="imageAddress">Choose a image</label>
                             <input type="file" id="imageAddress" th:field="*{imageAddress}">
