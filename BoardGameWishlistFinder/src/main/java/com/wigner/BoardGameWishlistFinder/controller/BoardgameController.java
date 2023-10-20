@@ -4,6 +4,7 @@ import com.wigner.BoardGameWishlistFinder.model.Boardgame;
 import com.wigner.BoardGameWishlistFinder.repositories.BoardgameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,7 +27,16 @@ public class BoardgameController {
         modelAndView.addObject("boardgames", boardgameList);
 
         return modelAndView;
+    }
 
+    @RequestMapping(value = "/admin/displayCreateBoardgame", method = RequestMethod.GET)
+    public ModelAndView displayCreateBoardgame() {
+
+        ModelAndView modelAndView = new ModelAndView("create_boardgames.html");
+
+        modelAndView.addObject("boardgame", new Boardgame());
+
+        return modelAndView;
     }
 
 }
