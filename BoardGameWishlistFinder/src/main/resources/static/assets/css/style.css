@@ -290,6 +290,21 @@ i {
     display: flex;
     flex-direction: column;
 }
+.bgSection .navBgSection {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.bgSection input {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+	font-weight: bold;
+    border: none;
+    cursor: pointer;
+	height: auto;
+	border-radius: var(--border-radius);
+	padding: 7px 50px;
+}
 #searchInput {
     align-self: flex-end;
     font-size: 16px;
@@ -398,6 +413,85 @@ i {
 	transform: translateY(0%);
 }
 /* End boardgame page*/
+
+/* Create boardgame page */
+.create-boardgame {
+	position: relative;
+    padding: 100px 50px 50px 50px;
+    min-height: 258px;
+    background: var(--primary-color);
+	color: var(--white);
+	font-weight: bold;
+}
+
+.create-boardgame input[type=text], .create-boardgame input[type=password] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+ 	border-radius: 4px;
+}
+
+.c-image {
+	margin-left: -14px;
+}
+
+.c-button {
+	margin-right: -14px;
+	margin-top: 10px;
+}
+
+.input-with-image {
+    position: relative;
+}
+
+.input-image {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+
+	width: 35px;
+	height: 35px;
+}
+
+.input-text {
+    padding-left: 50px !important;
+}
+
+input[type=file] {
+	visibility:hidden;
+}
+
+.create-boardgame button, label[for=imageAddress] {
+	background-color: var(--secondary-color);
+    color: var(--primary-color);
+	font-weight: bold;
+    border: none;
+    cursor: pointer;
+	height: auto;
+	border-radius: var(--border-radius);
+	padding: 10px 50px;
+}
+
+.divBgImage {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.bgImage {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.add-createBg {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* End create boardgame page */
 
 /* Alert block */
 .alert {
