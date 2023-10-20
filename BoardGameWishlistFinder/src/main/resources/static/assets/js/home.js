@@ -45,3 +45,10 @@ $(document).ready(function() {
         });
     });
 });
+
+imageAddress.onchange = evt => {
+    const [file] = imageAddress.files
+    if (file) {
+        bgImage.src = URL.createObjectURL(file)
+}
+}
