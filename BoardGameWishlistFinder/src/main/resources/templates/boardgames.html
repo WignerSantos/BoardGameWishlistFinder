@@ -4,7 +4,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
     <head>
-        <th:block th:replace="head :: head"></th:block>
+        <th:block th:replace="~{head :: head}"></th:block>
         <title>Boardgames</title>
     </head>
 
@@ -22,18 +22,18 @@
             <div class="bgPage">
                 <div class="card" th:each="boardgame : ${boardgames}">
                     <div class="card--image">
-                        <a th:href="@{/}"><img th:src="${boardgame.imageAddress}" alt=""></a>
+                        <a th:href="@{/}"><img th:src="@{'data:image/jpeg;base64,' + ${boardgame.imageAddress}}" alt=""></a>
                     </div>
                     <div class="card--info info--1">
                         <span class="info--text" th:text="${boardgame.name}"></span>
                         <div class="info--image">
-                            <a href=""><img th:src="${boardgame.imageAddress}" alt=""></a>
+                            <a href=""><img th:src="@{'data:image/jpeg;base64,' + ${boardgame.imageAddress}}" alt=""></a>
                         </div>
                     </div>
                     <div class="card--info info--2">
                         <span class="info--text" th:text="${boardgame.players}"></span>
                         <div class="info--image">
-                            <a href=""><img th:src="${boardgame.imageAddress}" alt=""></a>
+                            <a href=""><img th:src="@{'data:image/jpeg;base64,' + ${boardgame.imageAddress}}" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
         <!-- //footer block -->
 
         <!-- Scripts block -->
-        <div th:replace="myScripts.html"></div>
+        <div th:replace="~{myScripts.html}"></div>
         <!-- //Scripts block -->
     </body>
 
