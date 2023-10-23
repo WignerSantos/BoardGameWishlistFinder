@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface BoardgameRepository extends JpaRepository<Boardgame, Integer> {
 
+    Boardgame readByName(String name);
+
 }
