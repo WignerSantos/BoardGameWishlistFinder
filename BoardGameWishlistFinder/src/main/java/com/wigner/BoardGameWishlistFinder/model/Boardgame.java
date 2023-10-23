@@ -1,12 +1,12 @@
 package com.wigner.BoardGameWishlistFinder.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.apache.logging.log4j.message.Message;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 
 @Entity
 public class Boardgame extends BaseEntity {
@@ -31,8 +31,13 @@ public class Boardgame extends BaseEntity {
     @NotBlank(message = "Sleeve Size must not be blank!")
     private String sleeveSize;
 
-    @NotBlank(message = "Image address must not be blank")
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
     private String imageAddress;
+
+
+    @Transient
+    private MultipartFile file;
 
     public Boardgame() {}
 
@@ -90,5 +95,13 @@ public class Boardgame extends BaseEntity {
 
     public void setImageAddress(String imageAddress) {
         this.imageAddress = imageAddress;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 }
