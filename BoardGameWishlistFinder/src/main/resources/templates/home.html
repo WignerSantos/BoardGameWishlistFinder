@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head>
-        <th:block th:replace="head :: head"></th:block>
+        <th:block th:replace="~{head :: head}"></th:block>
         <title>Home</title>
     </head>
 
@@ -51,7 +51,7 @@
         <!-- //footer block -->
 
         <!-- Scripts block -->
-        <div th:replace="myScripts.html"></div>
+        <div th:replace="~{myScripts.html}"></div>
         <!-- //Scripts block -->
     </body>
 
