@@ -35,6 +35,8 @@ public class Boardgame extends BaseEntity {
     @Column(columnDefinition = "MEDIUMBLOB")
     private String imageAddress;
 
+    @NotBlank(message = "Description must not be blank!")
+    private String description;
 
     @Transient
     private MultipartFile file;
@@ -95,6 +97,14 @@ public class Boardgame extends BaseEntity {
 
     public void setImageAddress(String imageAddress) {
         this.imageAddress = imageAddress;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public MultipartFile getFile() {
