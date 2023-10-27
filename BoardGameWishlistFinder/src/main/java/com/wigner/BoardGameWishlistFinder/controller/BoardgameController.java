@@ -4,7 +4,9 @@ import com.wigner.BoardGameWishlistFinder.model.Boardgame;
 import com.wigner.BoardGameWishlistFinder.repositories.BoardgameRepository;
 import com.wigner.BoardGameWishlistFinder.services.BoardgameService;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,7 +57,6 @@ public class BoardgameController {
 
     @RequestMapping(value = "/admin/createBoardgame", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ModelAndView createBoardgame(@Valid @ModelAttribute("boardgame") Boardgame boardgame,
-//                                        @RequestPart(value = "file") MultipartFile file,
                                         Errors errors) {
 
         ModelAndView modelAndView = new ModelAndView("create_boardgames.html");
@@ -72,6 +73,22 @@ public class BoardgameController {
         } else if(isSaved == 2) {
             errors.rejectValue("imageAddress", "null", "Choose an image!");
         }
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/boardgame/{boardgameName}")
+    public ModelAndView displayABoardgame(@PathVariable("boardgameName") String boardgameName) {
+
+        ModelAndView modelAndView = new ModelAndView("boardgame.html");
+
+        System.out.println(boardgameName);
+        Boardgame bg = boardgameRepository.readByName(boardgameName);
+        if(null == bg) {
+            modelAndView.setViewName("redirect:/boardgames");
+        }
+
+        modelAndView.addObject("boardgame", bg);
 
         return modelAndView;
     }
