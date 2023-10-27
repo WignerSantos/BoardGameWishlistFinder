@@ -1,6 +1,7 @@
 package com.wigner.BoardGameWishlistFinder.controller;
 
 import com.wigner.BoardGameWishlistFinder.model.Boardgame;
+import com.wigner.BoardGameWishlistFinder.model.Person;
 import com.wigner.BoardGameWishlistFinder.repositories.BoardgameRepository;
 import com.wigner.BoardGameWishlistFinder.services.BoardgameService;
 import jakarta.validation.Valid;
@@ -19,10 +20,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class BoardgameController {
@@ -91,6 +89,20 @@ public class BoardgameController {
         modelAndView.addObject("boardgame", bg);
 
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/deleteBoardgame")
+    public ModelAndView deleteBoardgame(@RequestParam(value = "boardgameId") int boardgameId) {
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/boardgames");
+
+        Optional<Boardgame> bg = boardgameRepository.findById(boardgameId);
+        if(bg.isPresent()) {
+            boardgameRepository.deleteById(boardgameId);
+        }
+
+        return modelAndView;
+
     }
 
 }
