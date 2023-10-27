@@ -20,6 +20,7 @@ public class ProjectSecurityConfig {
                         .requestMatchers("/assets/**").permitAll()
                         .requestMatchers("/home").authenticated()
                         .requestMatchers("/boardgames").authenticated()
+                        .requestMatchers("/boardgame/**").authenticated()
                         .requestMatchers("/admin/**").hasRole("ADMIN"))
                         .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
                                 .defaultSuccessUrl("/home").failureUrl("/login?error=true"))
