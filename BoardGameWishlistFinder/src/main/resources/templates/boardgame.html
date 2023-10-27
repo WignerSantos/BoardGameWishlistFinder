@@ -15,30 +15,31 @@
         <!-- //header -->
 
         <section class="boardgameItem">
+<!--            <form th:action="@{/}" th:object="${boardgame}" method="POST" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">-->
 
-            <div class="boardgameItemStats">
-                <img src="https://storage.googleapis.com/ludopedia-capas/16788_t.jpg" alt="">
+                <div class="boardgameItemStats">
+                    <img th:src="@{'data:image/jpeg;base64,' + ${boardgame.imageAddress}}">
 
-                <div class="boardgameItemStats2">
-                    Tribes of the wind <br/>
-                    1 - 4 <br/>
-                    50 MIN <br/>
-                    129 (63.5 mm X 88.0 mm)
-                    27 (43.0 mm X 65.0 mm)
+                    <div class="boardgameItemStats2">
+                        <p th:text="${boardgame.name}"></p> <br/>
+                        <p th:text="${boardgame.players}"></p> <br/>
+                        <p th:text="${boardgame.duration}"></p> <br/>
+                        <p th:text="${boardgame.publishing}"></p>
+                        <p th:text="${boardgame.sleeveSize}"></p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="boardgameItemIB">
-                <div class="boardgameItemInfos">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit expedita, aspernatur fugiat est ab quis facere similique, suscipit nobis facilis eligendi ea, nesciunt harum repellendus? In laudantium ullam repellendus sint?
+                <div class="boardgameItemIB">
+                    <div class="boardgameItemInfos">
+                        <p th:text="${boardgame.description}"></p>
+                    </div>
+                    <div class="boardgameItemButtons">
+                        <button>+ WISHLIST</button>
+                        <button sec:authorize="hasRole('ADMIN')">UPDATE</button>
+                        <button sec:authorize="hasRole('ADMIN')">DELETE</button>
+                    </div>
                 </div>
-                <div class="boardgameItemButtons">
-                    <button>+ WISHLIST</button>
-                    <button>UPDATE</button>
-                    <button>DELETE</button>
-                </div>
-            </div>
-
+<!--            </form>-->
         </section>
 
         <!-- footer block -->
