@@ -13,9 +13,6 @@ import java.util.Base64;
 @Service
 public class BoardgameService {
 
-    @Value("${boardgame.images.source}")
-    private String boardgameImages;
-
     @Autowired
     BoardgameRepository boardgameRepository;
 
