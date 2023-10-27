@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+    <head>
+        <th:block th:replace="~{head :: head}"></th:block>
+        <title>Boardgame</title>
+    </head>
+
+    <body>
+
+        <!-- header -->
+        <div th:replace="~{header :: header}">...</div>
+        <!-- //header -->
+
+        <section class="boardgameItem">
+
+            <div class="boardgameItemStats">
+                <img src="https://storage.googleapis.com/ludopedia-capas/16788_t.jpg" alt="">
+
+                <div class="boardgameItemStats2">
+                    Tribes of the wind <br/>
+                    1 - 4 <br/>
+                    50 MIN <br/>
+                    129 (63.5 mm X 88.0 mm)
+                    27 (43.0 mm X 65.0 mm)
+                </div>
+            </div>
+
+            <div class="boardgameItemIB">
+                <div class="boardgameItemInfos">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit expedita, aspernatur fugiat est ab quis facere similique, suscipit nobis facilis eligendi ea, nesciunt harum repellendus? In laudantium ullam repellendus sint?
+                </div>
+                <div class="boardgameItemButtons">
+                    <button>+ WISHLIST</button>
+                    <button>UPDATE</button>
+                    <button>DELETE</button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- footer block -->
+        <div th:replace="~{footer :: footer}">...</div>
+        <!-- //footer block -->
+
+        <!-- Scripts block -->
+        <div th:replace="~{myScripts.html}"></div>
+        <!-- //Scripts block -->
+    </body>
+
+</html>
