@@ -14,7 +14,7 @@
 	--white: #FFF;
   }
 
- * {
+* {
 	padding:0;
 	margin:0;
 }
@@ -508,10 +508,11 @@ input[type=file] {
 	align-self: flex-end;
 }
 
-.boardgameItemButtons button {
+.boardgameItemButtons .bt_bg {
 	background-color: var(--secondary-color);
-    color: var(--primary-color);
+	color: var(--primary-color);
 	font-weight: bold;
+	text-decoration: none;
     border: none;
     cursor: pointer;
 	height: auto;
