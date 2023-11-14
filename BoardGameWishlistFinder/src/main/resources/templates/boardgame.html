@@ -14,32 +14,62 @@
         <div th:replace="~{header :: header}">...</div>
         <!-- //header -->
 
-        <section class="boardgameItem">
-<!--            <form th:action="@{/}" th:object="${boardgame}" method="POST" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">-->
-
+        <section th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+            <form class="boardgameItem" th:action="@{/admin/updateBoardgame}" enctype="multipart/form-data" th:object="${boardgame}" method="POST">
+                <ul>
+                    <li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('boardgame.*')}" th:text="${error}"></li>
+                </ul>
                 <div class="boardgameItemStats">
-                    <img th:src="@{'data:image/jpeg;base64,' + ${boardgame.imageAddress}}">
+                    <img id="bgImage" th:src="@{'data:image/jpeg;base64,' + ${boardgame.imageAddress}}">
 
-                    <div class="boardgameItemStats2">
-                        <p th:text="${boardgame.name}"></p> <br/>
-                        <p th:text="${boardgame.players}"></p> <br/>
-                        <p th:text="${boardgame.duration}"></p> <br/>
-                        <p th:text="${boardgame.publishing}"></p>
-                        <p th:text="${boardgame.sleeveSize}"></p>
+                    <div class="boardgameItemStats2 admin">
+                        <input type="hidden" id="boardgameId" th:field="*{boardgameId}">
+                        <input type="text" th:field="*{name}">
+                        <input type="text" th:field="*{players}">
+                        <input type="text" th:field="*{duration}">
+                        <input type="text" th:field="*{publishing}">
+                        <input type="text" th:field="*{sleeveSize}">
+                        <div class="imageAddress">
+                            <label for="imageAddress">Choose a image</label>
+                            <input type="file" id="imageAddress" th:field="*{file}">
+                        </div>
                     </div>
                 </div>
 
                 <div class="boardgameItemIB">
                     <div class="boardgameItemInfos">
-                        <p th:text="${boardgame.description}"></p>
+                        <textarea rows="13" cols="130" th:field="*{description}"></textarea>
                     </div>
                     <div class="boardgameItemButtons">
                         <a class="bt_bg" th:href="@{/}">+ WISHLIST</a>
-                        <a class="bt_bg" sec:authorize="hasRole('ADMIN')" th:href="@{/}">UPDATE</a>
-                        <a class="bt_bg" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/deleteBoardgame(boardgameId=${boardgame.boardgameId})}">DELETE</a>
+                        <button class="bt_bg">UPDATE</button>
+                        <a class="bt_bg" th:href="@{/admin/deleteBoardgame(boardgameId=${boardgame.boardgameId})}">DELETE</a>
                     </div>
                 </div>
-<!--            </form>-->
+            </form>
+        </section>
+
+        <section class="boardgameItem" th:unless="${#authorization.expression('hasRole(''ADMIN'')')}">
+            <div class="boardgameItemStats">
+                <img th:src="@{'data:image/jpeg;base64,' + ${boardgame.imageAddress}}">
+
+                <div class="boardgameItemStats2">
+                    <p th:text="${boardgame.name}"></p> <br/>
+                    <p th:text="${boardgame.players}"></p> <br/>
+                    <p th:text="${boardgame.duration}"></p> <br/>
+                    <p th:text="${boardgame.publishing}"></p>
+                    <p th:text="${boardgame.sleeveSize}"></p>
+                </div>
+            </div>
+
+            <div class="boardgameItemIB">
+                <div class="boardgameItemInfos">
+                    <p th:text="${boardgame.description}"></p>
+                </div>
+                <div class="boardgameItemButtons">
+                    <a class="bt_bg" th:href="@{/}">+ WISHLIST</a>
+                </div>
+            </div>
         </section>
 
         <!-- footer block -->
