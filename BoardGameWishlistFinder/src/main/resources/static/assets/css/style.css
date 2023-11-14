@@ -493,6 +493,18 @@ input[type=file] {
 	line-height: 10pt
 }
 
+.admin input, textarea {
+	border: none;
+	background: transparent;
+	color: var(--white);
+	margin-top: 7px;
+}
+
+.imageAddress {
+    margin-top: 7px;
+    font-size: 10px;
+}
+
 .boardgameItemIB {
 	display: flex;
 	flex-direction: column;
@@ -519,8 +531,6 @@ input[type=file] {
 	border-radius: var(--border-radius);
 	padding: 10px 30px;
 }
-
-
 /* End boardgameItem */
 
 /* Alert block */
