@@ -18,22 +18,17 @@ public class BoardgameService {
 
 
     /* Codes
-    * 0 - NotSaved
     * 1 - Saved
-    * 2 - ImageNull
-    * 3 - Error
+    * 2 - Error
+    * 3 - Duplicate
     */
     public int saveBoardgame(Boardgame boardgame) {
-        int code = 0;
+        int code = 2;
 
         String fileName = boardgame.getFile().getOriginalFilename();
         try {
             boardgame.setImageAddress(Base64.getEncoder().encodeToString(boardgame.getFile().getBytes()));
         } catch (IOException e) {
-            return 3;
-        }
-
-        if(boardgame.getImageAddress().equals("")) {
             return 2;
         }
 
@@ -43,9 +38,15 @@ public class BoardgameService {
             code = 1;
         } else {
             if(boardgame.getBoardgameId() == bg.getBoardgameId()) {
+                if(boardgame.getImageAddress().equals("")) {
+                    boardgame.setImageAddress(bg.getImageAddress());
+                }
+
                 boardgameRepository.save(boardgame);
 
                 code = 1;
+            } else {
+              code = 3;
             }
         }
 
