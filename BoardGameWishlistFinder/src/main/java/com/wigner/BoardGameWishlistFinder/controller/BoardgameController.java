@@ -75,18 +75,39 @@ public class BoardgameController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/boardgame/{boardgameName}")
+    @RequestMapping(value = "/boardgame/{boardgameName}", method = RequestMethod.GET)
     public ModelAndView displayABoardgame(@PathVariable("boardgameName") String boardgameName) {
 
         ModelAndView modelAndView = new ModelAndView("boardgame.html");
 
-        System.out.println(boardgameName);
         Boardgame bg = boardgameRepository.readByName(boardgameName);
         if(null == bg) {
             modelAndView.setViewName("redirect:/boardgames");
         }
 
         modelAndView.addObject("boardgame", bg);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/updateBoardgame", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ModelAndView updateBoardgame(@Valid @ModelAttribute(value = "boardgame") Boardgame boardgame, Errors errors) {
+
+        ModelAndView modelAndView = new ModelAndView("boardgame.html");
+
+        if(errors.hasErrors()) {
+            return modelAndView;
+        }
+
+        if(boardgame.getBoardgameId() > 0) {
+            int code = boardgameService.saveBoardgame(boardgame);
+
+            switch (code) {
+                case 1 -> modelAndView.setViewName("redirect:/boardgame/" + boardgame.getName());
+                case 2 -> System.out.println("ERROR!");
+                case 3 -> errors.rejectValue("name", "duplicate", "Board game with the same name already exists.");
+            }
+        }
 
         return modelAndView;
     }
@@ -102,7 +123,6 @@ public class BoardgameController {
         }
 
         return modelAndView;
-
     }
 
 }
